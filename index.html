@@ -1,1 +1,155 @@
-Hello World
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>bob-angular by KevinEverywhere</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/KevinEverywhere">View On GitHub</a></li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>bob-angular</h1>
+          <p>An evolving angular-three.js seed</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/KevinEverywhere">KevinEverywhere</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h3>
+<a id="version-000" class="anchor" href="#version-000" aria-hidden="true"><span class="octicon octicon-link"></span></a>version 0.0.0</h3>
+
+<p><em>This is in development and is not recommended to develop with as a base until version 0.0.1.</em></p>
+
+<p>This project is an application skeleton, influenced by and forked from angular-seed,
+<a href="https://github.com/angular/angular-seed">https://github.com/angular/angular-seed</a>
+It provides a Three D metaphor with sample page and use scenarios.</p>
+
+<p>The application is preconfigured to install the Angular framework, three.js, d3, less,
+and required third-party frameworks. The seed app provides navigation and transition 
+functionality, API-powered 3D content panes, as well as development and testing tools.</p>
+
+<h3>
+<a id="prerequisites" class="anchor" href="#prerequisites" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prerequisites</h3>
+
+<p>You must have node.js and its package manager (npm) installed. All other dependencies
+are managed by node through package.json, and then bower thrugh bower.json. You can 
+get node and npm from <a href="http://nodejs.org/">http://nodejs.org/</a>.</p>
+
+<h3>
+<a id="clone-bob-angular" class="anchor" href="#clone-bob-angular" aria-hidden="true"><span class="octicon octicon-link"></span></a>Clone bob-angular</h3>
+
+<p>In the terminal, in the directory where you want to install the app, git clone the 
+bob-angular repository. Then, run <em>npm start</em> to install and launch the node 
+web server; or <em>npm install</em> and <em>bower install</em> to merely install the application
+dependencies. </p>
+
+<p><em>Permission issues may occur if the directory permission and user permissions are different.</em></p>
+
+<pre><code>git clone https://github.com/KevinEverywhere/bob-angular.git
+cd bob-angular
+npm start 
+</code></pre>
+
+<h3>
+<a id="install-dependencies" class="anchor" href="#install-dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install Dependencies</h3>
+
+<p>There are server-side, application and testing dependencies loaded in  <code>npm</code>, 
+the <a href="https://www.npmjs.org/">node package manager</a>, and in the front-end development dependencies
+through <code>bower</code>, a <a href="http://bower.io">client-side code package manager</a>.</p>
+
+<p>The npm install and npm start scripts will install two new directories, 
+and then populate them with imported code:</p>
+
+<ul>
+<li>
+<code>node_modules</code> - contains the npm packages for the tools we need</li>
+<li>
+<code>app/libs</code> - contains the angular framework files</li>
+</ul>
+
+<p>*The <code>libs</code> folder is put into the app folder  through the <code>.bowerrc</code> file when 
+'bower install' is run.</p>
+
+<h3>
+<a id="run-the-application" class="anchor" href="#run-the-application" aria-hidden="true"><span class="octicon octicon-link"></span></a>Run the Application</h3>
+
+<p>The application can be tested in localhost:8000 by running npm start</p>
+
+<pre><code>npm start
+</code></pre>
+
+<p>The app should now be running at <code>http://localhost:8000/app/</code>. The most typical
+problems in npm start involve permission issues, availability of port, and 
+software availability. Ensure that you have the correct software installed to begin, 
+and that the directory in which you are running npm start contains the bob-angular 
+seed files. </p>
+
+<h4>
+<a id="port-8000-availability" class="anchor" href="#port-8000-availability" aria-hidden="true"><span class="octicon octicon-link"></span></a>Port 8000 Availability</h4>
+
+<p>Edit line 23 of package.json so that the 8000 port is changed to the one you wish
+to use.</p>
+
+<pre><code>    "start": "http-server -a localhost -p 8000 -c-1",
+</code></pre>
+
+<h2>
+<a id="directory-layout" class="anchor" href="#directory-layout" aria-hidden="true"><span class="octicon octicon-link"></span></a>Directory Layout</h2>
+
+<pre><code>app/                                   --&gt; all of the source files for the application
+  assets/                              --&gt; asset and creation media, CSS JS, JSON files
+    css, js, media
+  components/                          --&gt; view or feature based components
+    footer, main, media, navigation    --&gt; view components
+    youtube, leaflet                   --&gt; feature (vendor) based components
+  shared/                              --&gt; feature based shared components (services)
+    three_module                       --&gt; angular three service used by view pontts 
+  libs/                                --&gt; the repository for bower installed JS files
+    3l, angular, bootstrap, three.js,  --&gt; bower-maintained source files created after
+    jquery, less, ui-router, others        running 'npm start' or 'bower install' 
+  app.js                               --&gt; main application module
+  index.html                           --&gt; the entrace point to the app.
+TODO:
+  index-async.html                     --&gt; index.html with asynchronous JavaScript loads
+karma.conf.js                          --&gt; config file for running unit tests with Karma
+e2e-tests/                             --&gt; end-to-end tests
+</code></pre>
+
+<h2>
+<a id="testing" class="anchor" href="#testing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Testing</h2>
+
+<p>There will be two kinds of tests in the bob-angular seed application: Unit tests and End to End tests.</p>
+
+<p>This section will be expanded as the content is updated and made available for view and testing.</p>
+
+<h2>
+<a id="contact" class="anchor" href="#contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contact</h2>
+
+<p>For more information on bob-angular please contact <a href="mailto:kevin@planetkevin.com">kevin@planetkevin.com</a></p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
