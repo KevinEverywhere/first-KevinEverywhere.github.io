@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+   	<title>Lesson 1: Overview</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/main.css"/>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
+	</head>
+	<body>
+		<div class="content">
+		<div class="jumbotron">
+			<div class="container">
+			<h1>Lesson 1: Overview</h1>
+			<div class="inner_content">
+				<p>
+					bob-angular is an ambitious tool for learning a number of current technologies and techniques through functional examples. Rather than focus on a single application or framework, bob-angular looks at the interconnectedness of the many moving parts in a modern web application. To do this, it includes an express server and postgres database, as well as a fully functional angular application.
+				</p>
+			</div>
+			<h2>Initial Concept</h2>
+			<div class="inner_content">
+				<p>
+					In creating this seed, I wanted to acquire new knowledge, apply existing knowledge to something that could capture my imagination, and give enough dimension and thought to it to make it useful to others. As a matter of purpose, design choices were made to include:
+				</p>
+				<ul>
+					<li>a rich single page app run on top of angular</li>
+					<li>a modern server side component built on top of node</li>
+					<li>a development and build process that included modern automation and testing</li>
+					<li>a demonstration of traditional 2d web content mapped to animating 3d surfaces</li>
+					<li>methods to provide javascript as well as css support to responsive design</li>
+					<li>a youtube feed component</li>
+					<li>an open source mapping component</li>
+					<li>an svg interactive map of the world</li>
+					<li>a functioning server and sample database integration</li>
+					<li>a method to push builds to github and then heroku</li>
+				</ul>
+				<p>
+					Most of the larger objectives were included at the outset, but as development began, new ones were identified and included as possible. At the end of this initial rev, there are known (and unknown) anomalous functionalities that will want to be improved, but there is at least enough to sink one's teeth in without worry of acquiring too bad a taste from its implementation.
+				</p>
+			</div>
+			<h2>Technology Choices</h2>
+			<div class="inner_content">
+				<p>
+					The following client and server technologies, libraries and frameworks have been used in the creation of bob-angular.
+				</p>
+				<h3>Client technologies</h3>
+					<ul>
+
+						<li>html5, css3 and javascript</li>
+						<li><a href="http://angularjs.org">angular.js</a></li>
+						<li><a href="http://threejs.org">three.js</a></li>
+						<li><a href="http://lesscss.org/">less</a></li>
+						<li><a href="http://getbootstrap.com/">bootstrap</a></li>
+						<li><a href="http://jquery.com/">jquery</a></li>
+						<li><a href="http://d3js.org/">d3</a></li>
+						<li><a href="http://leafletjs.com/">leaflet</a></li>
+						<li><a href="https://developers.google.com/youtube/player_parameters">youtube</a></li>
+						<li><a href="http://html5boilerplate.com/">html5 boilerplate</a></li>
+					</ul>
+				<h3>Server technologies</h3>
+					<ul>
+						<li><a href="http://nodejs.org">node</a></li>
+						<li><a href="http://expressjs.com/">express</a></li>
+						<li><a href="http://www.postgresql.org/">postgres</a></li>
+						<li><a href="http://gruntjs.com/">grunt</a></li>
+						<li><a href="http://bower.io/">bower</a></li>
+						<li><a href="http://jasmine.github.io/">jasmine</a></li>
+						<li><a href="http://angular.github.io/protractor">protractor</a></li>
+						<li><a href="http://karma-runner.github.io/0.12/index.html">karma</a></li>
+						<li><a href="http://git-scm.com/">git</a></li>
+					<li><a href="http://www.heroku.com/">heroku</a></li>
+				</ul>
+				<p>
+					As much as possible, attempts were made to create structures and make code and process choices that would enable late-conceived features to be included without impacting the overall application. The introduction will conclude with a brief description of the application's file and directory structure.
+				</p>
+				<h2>File and Directory Structure</h2>
+				<p>
+					In the outermost directory, there are five sub directories and nine files for installation and server tasks. The client application is built during the installation process and is a child of the "dist" directory.
+				</p>
+			</div>
+			<pre>
+	app/                                   --> application source files
+	  assets/                              --> media, CSS JS, JSON assets
+	  components/                          
+	    footer                             --> view component
+	    main                               --> view component
+	    context                            --> view component
+	    navigation                         --> view component
+	    youtube                            --> feature component
+	    leaflet                            --> feature component
+	    svg                                --> feature component
+	  shared                               
+	    three_module                       --> feature service
+	    country_module                     --> feature service
+	  libs/                                --> repository for bower-created 
+	    3l, angular, bootstrap, three.js,      source files from 'npm start' or  
+	    jquery, less, ui-router, others        'bower install' 
+	  app.js                               --> main application module
+	  index.html                           --> the entrace point to the app.
+
+	dist/                                  --> grunt-created after bower install
+
+	*****   IMPORTANT!     *****           --> dist contains compiled app/ files
+
+	node_modules/                          --> created for server use during install
+	tests/                                 --> supporting files for tests 
+	tests/e2e-tests/                       --> end-to-end tests
+	.bowerrc                               --> directs bower to load libs
+	.gitignore                             --> the files that are excluded for git
+	bower.json                             --> client-side libraries to install
+	exports.index.js                       --> express server for testing
+	Gruntfile.js                           --> Creates the files that go in dist
+	index.js                               --> express server and postgres gateway
+	karma.conf.js                          --> config file for karma unit tests 
+	package.json                           --> instruction files for npm 
+	Procfile                               --> runs _node index.js_ on heroku
+				</pre>
+				<p>
+					In the next lesson, the main installation files, including package.json, bower.json, and Gruntfile, will be explored.
+				</p>
+				</div>
+				<div class="footer vertical-divider">
+					<p class="centered">
+						<a class="padded" href="../index.html">Home Page</a><br/>
+						<a class="padded" href="Lesson2_installation.html">Lesson 2: Installation > </a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+

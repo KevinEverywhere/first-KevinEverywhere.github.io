@@ -1,0 +1,40 @@
+.inner_content{
+	padding:0em 0em 0.6em 0em;
+}
+
+body{
+	padding:0.8em;
+	background-color: #333;
+}
+
+.jumbotron h1, .jumbotron .h1 {
+	font-size: 42px;
+	text-align: center;
+}
+a{
+	cursor:pointer;
+}
+dd{
+	margin-left: 1em;
+}
+
+.padded{
+	padding: 0em 3em 0em 3em;
+}
+
+.centered{
+	text-align: center;
+}
+
+.vertical-divider{
+	border-top: 1px solid #000;
+	padding-top: 1em;
+}
+.coming_soon{
+	color:#ccc;
+	cursor:pointer;
+}
+.coming_soon:hover{
+	color:#999;
+	cursor:pointer;
+}

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Lesson 2: Installation</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/main.css"/>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
+	</head>
+	<body>
+		<div class="content">
+		<div class="jumbotron">
+			<div class="container">
+				<h1>Lesson 2: Installation</h1>
+				<div class="inner_content">
+				<p>
+					Prior to installation, ensure that node and npm are installed on your system. Many cloud services, such as heroku.com, include node server options with node, npm and more to ensure a successful build process.
+				</p>
+				<h2>Installing the bob-angular repo</h2>
+				<p>
+					You can get the repo for bob-angular, along with installation instructions, at its <a href="http://kevineverywhere.github.io/bob-angular/">github address</a>. Briefly, the following is all you need to do:
+				</p>
+				<pre>
+git clone https://github.com/KevinEverywhere/bob-angular.git
+cd bob-angular
+npm install
+				</pre>
+				<p>
+					That should install all of the files you need to run the server and client applications. Consult the github site for installation troubleshooting.
+				</p>
+				<h2>What the Files Do</h2>
+				<p>
+					Each of the primary files in the main directory have a specific purpose and will be looked at individually. The first, and most important of these, is package.json.
+				</p>
+				</div>
+				<h3>package.json</h3>
+				<div class="inner_content">
+				<p>
+					For node, the package.json file is the entry point for understanding how to treat its content. These are often copied and pasted from one application or project to the next, often with less-than-complete understanding of the individual elements themselves. The main elements in package.json used in bob-angular are:
+				</p>
+				<dl>
+					<dt>name</dt>
+					<dd>The actual name of the application (directory name)</dd>
+					<dt>version</dt>
+					<dd>To differentiate the application as it evolves. Used by others when referencing in package.json files</dd>
+					<dt>description</dt>
+					<dd>What the application does</dd>
+					<dt>repository</dt>
+					<dd>An optional property that enables others to clone files from source URL</dd>
+					<dt>license</dt>
+					<dd>How can others use the files. The MIT license is one that allows individuals to modify and repurpose code</dd>
+					<dt>authors</dt>
+					<dd>Who to blame or thank when things go right or wrong</dd>
+					<dt>keywords</dt>
+					<dd>These help people find the application</dd>
+					<dt>config</dt>
+					<dd>Variables defined here can be used in package scripts. Here, it is required by Selenium for protractor testing.</dd>
+					<dt>dependencies</dt>
+					<dd>These files are used during the build and installation of the application.</dd>
+					<dt>devDependencies</dt>
+					<dd>These are files used during development, such as unit and e2e tests</dd>
+					<dt>scripts</dt>
+					<dd>These can be run at the command line and linked to run sequentially</dd>
+				</dl>
+				<p>
+					When you first clone the repositiory, then enter the directory you just created, you can run "install", "start", or "test" by simply typing "npm ACTIONNAME" (e.g., "npm start"). For the other scripts, you must use the keyword "run", like "npm run ACTIONNAME" (e.g., "npm run fulltest").
+					</p>
+					<p>
+					One particularly interesting thing about scripts is the use of "pre" and "post" prefixes to daisy chain scripts. If you follow the path of npm start, for instance, the following happens:
+				</p>
+
+				<pre>
+	prestart                                         Runs npm install-->
+	    npm install                                  Installs what's in dependencies
+
+	    npm postinstall                              Runs bower install and grunt
+	        bower install &&                         Installs what's in devdependencies
+	        npm i -S grunt grunt-cli && grunt        Processes app according to Gruntfile 
+	start
+	    node index.js (launches express server)      Server actually launches
+				</pre>
+				<p>
+					The scripts here offer a mere glimpse of what is possible to do with a package.json file.For more information, visit the <a href="https://docs.npmjs.com/files/package.json">NPM Documentation</a>
+				</p>
+				</div>
+				<h3>bower.json</h3>
+				<div class="inner_content">
+				<p>
+					Once the package.json file has been referenced for the initial installs, bower.json is used in similar fashion to install the libraries used for the client application. These are quite similar to package.json, with many shared property names, such as "name", "version", and "dependencies". There are two properties included here that are not included in the package.json file:			
+				</p>
+				<dl>
+					<dt>main</dt>
+					<dd>The main entrance to the application, in this case a single file.</dd>
+					<dt>homepage</dt>
+					<dd>The location of the content on the web. In this case, the link is to the github page.</dd>
+				</dl>
+				<h4>.bowerrc</h4>
+				<p>
+					The .bowerrc file can be used with bower to augment its features. Here, one property, directory, is used to rename the automatically titled "bower_components" directory to "libs". This is created in the app directory when bower is run during the postinstall script.
+				</p>
+				<p>
+					Like node, bower has a large commmunity that share tips and techniques. For more information, visit the 
+					<a href="http://bower.io/">bower.io website</a>, or go directly to the 
+					<a href="http://bower.io/docs/creating-packages/#bowerjson">bower.json</a> and
+					<a href="http://bower.io/docs/config/">.bowerrc</a> documentation.
+				</p>
+				</div>
+				<h3>Gruntfile</h3>
+				<div class="inner_content">
+					<p>
+						Grunt is somewhat of a workhorse in preparing the client app for deployment. It works similarly to other technologies that use the package.json file. Within the module.exports function, grunt uses its file object to read the package.json file. It then associates uglify and copy with a number of files which are inserted into their dest directory, "dist/". Then, the two tasks, uglify and copy, are loaded and registered for use.
+					</p>
+					<p>
+						bob-angular uses only a thin slice of grunt functionality to reduce its overall size. Compare the size of the "app/" directory with "dist/app". The latter has been processed and created by grunt. Gruntfile is accessed during the postinstall script, here: 
+					</p>
+					<pre>npm i -S grunt grunt-cli && grunt</pre>
+					<p>
+						This installs grunt-cli into the project and executes grunt with the instructions in Gruntfile. Grunt can be used to do many processing tasks between development and deployment. There are many regularly used plugins, including the ones here, ones featuring coffeescript, less, jade, sass, and many others. Grunt is one of the first things one considers when looking at how to automate process. More information can be found at the <a href="http://gruntjs.com/">gruntjs.com</a> website.
+					</p>
+				</div>
+				<h3>Procfile</h3>
+				<div class="inner_content">
+					<p>
+						This file is used by heroku to determine how the node site is run. The one for bob-angular is only a single name value entry, "web: node index.js". In more complex sites, you may see several entries. More information can be found <a href="https://devcenter.heroku.com/articles/procfile">here</a>. Although this applies to heroku, the content is relevant wherever a Procfile is required.
+					</p>
+				</div>
+				<h3>.gitignore</h3>
+				<div class="inner_content">
+					<p>
+						The name says it all. When you use git for version control, files that are defined within this file are ignored. You can get around this with a flag at the command line, and the file can be edited in many ways to support very specific file locations and naming conventions. For details on how to use this file, check out this <a href="http://git-scm.com/docs/gitignore">page</a>.
+					</p>
+				</div>
+				<h3>index.js</h3>
+				<div class="inner_content">
+					<p>
+						This is the file that launches the server application. It includes a number of libraries to support the express server and accompanying router. In addition to a simple router, it also includes an echo for feeds, and a gateway to the postgres server that it uses on heroku.
+					</p>
+					<p>
+						For more information, check out <a href="http://expressjs.com/">express.js</a> and <a href="http://www.postgresql.org/">postgresql</a>. 
+					</p>
+				</div>
+				<h3>exports.index.js</h3>
+				<div class="inner_content">
+					<p>
+						This file is similar to index.js, but it is used for testing. It is used by the "fulltest" script in package.json. Similar to "npm start", a number of scripts are executed when you run this script. 
+					</p>
+					<pre>
+	npm run fulltest                                        Runs npm prefulltest-->
+	    npm prefulltest                                     Runs npm test-->
+	    npm test                                            Runs npm pretest-->
+	        npm pretest                                     Runs npm install-->
+	            npm install                                 Installs dependencies
+	                npm postinstall                         Runs bower install and grunt
+	                    bower install &&                    Installs devdependencies
+	                    npm i -S grunt grunt-cli && grunt   Processes app according to Gruntfile 
+	    karma start                                         Called from run fulltest
+					</pre>
+					<p>
+						If you watch the console while you run this test, you will see the scripts being run almost identically to the install and start scripts. The difference comes after the installation. At that point, karma is initiated and searches for the files that are referenced in the karma.conf.js file. After these are concluded, the terminal gives instructions to run end to end (e2e) tests with protractor.
+					</p>
+				</div>
+				<h3>karma.conf.js</h3>
+				<div class="inner_content">
+					<p>
+						The two testing methods used in bob-angular are karma, for unit tests, and protractor, for e2e tests. Typically, karma tests are run more regularly, often using a watch function to test after individual updates. You do not have to run this using the fulltest script when you are typically working. You can run two scripts:
+					</p>
+					<pre>
+	node index.js
+	npm run test-single-run
+					</pre>
+					<p>
+						The first test starts the express server. The second one starts the karma test runner. The property settings in karma.conf.js may be roughly deduced by their property names and values. For more information on what is required and useful here, check out the <a href="http://karma-runner.github.io/0.12/config/configuration-file.html">sample configuration file</a>. When tests fail, they will give color-coded information in the console to help isolate code problems.
+					</p>
+				</div>
+				<h3>README.md</h3>
+				<div class="inner_content">
+					<p>
+						If you publish your own repository on bitbucket or github or elsewhere, you will want a README file. This should be a document that gives information about the repository, as well as cautions or advice for would be users. Typically, installation instructions and introductory documentation are included in the Read Me file. 
+					</p>
+				</div>
+				<h2>Summary</h2>
+				<div class="inner_content">
+					<p>
+						Each of the files in the outermost directory have a unique responsibility within the application. Some of these are shared tasks that involve more than one component, such as bower install that requires package.json inclusion, as well as the script that runs it. Hopefully, this lesson will have answered some questions, with the source links providing additional resources for questions that were raised or unanswered by the material here.
+					</p>
+				</div>
+			</div>
+				<div class="footer vertical-divider">
+					<p class="centered">
+						<a class="padded" href="../index.html">Home Page</a><br/>
+						<a class="padded" href="Lesson1_overview.html">< Lesson 1: Overview</a>
+						<a class="coming_soon" name="Lesson3_angular.html">Lesson 3: Installation > </a>
+					</p>
+				</div>
+		</div>
+		</div>
+	</body>
+</html>
+

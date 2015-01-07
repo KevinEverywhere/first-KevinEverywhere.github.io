@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>bob-angular: an evolving node-angular-three.js seed</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+  </head>
+  <body>
+    <div class="content">
+    <div class="jumbotron">
+      <div class="container">
+      <h1>bob-angular</h1>
+      <h4 class="centered">A Learning Tool for Full Stack Development Built on Node and Angular</h4>
+        <h2 id="intro" class="vertical-divider">Table of Contents</h2>
+        <dl>
+          <dt><a href="#intro">Introduction</a></dt>
+          <dd>Table of Contents and <a href="#description">Description</a></dd>
+          <dt><a href="html/Lesson1_overview.html">Lesson 1: Overview</a></dt>
+          <dd>Describes the project scope and the directory structure</dd>
+          <dt><a href="html/Lesson2_installation.html">Lesson 2: Installation</a></dt>
+          <dd>Describes the installation process and root directory files</dd>
+          <dt><a class="coming_soon" name="html/Lesson3_angular.html">Lesson 3: Angular</a></dt>
+          <dd class="coming_soon">Addresses the how and why of angular selection and implementation</dd>
+          <dt><a class="coming_soon" name="html/Lesson4_less.html">Lesson 4: Less and Responsive Design</a></dt>
+          <dd class="coming_soon">Responsive design for complex content needs</dd>
+          <dt><a class="coming_soon" name="html/Lesson5_three.html">Lesson 5: Three.js</a></dt>
+          <dd class="coming_soon">Choosing a 3d solution for web presentation</dd>
+          <dt><a class="coming_soon" name="html/Lesson6_svgAndD3.html">Lesson 6: SVG and D3</a></dt>
+          <dd class="coming_soon">An interactive SVG World Map is accessed using d3</dd>
+          <dt><a class="coming_soon" name="html/Lesson7_2dAnd3d.html">Lesson7: 2d and 3d</a></dt>
+          <dd class="coming_soon">Describes how 2d and 3d are merged in the presentation layer</dd>
+          <dt><a class="coming_soon" name="html/Lesson8_migratingContent.html">Lesson 8: Migrating Content</a></dt>
+          <dd class="coming_soon">Transitioning from Static to Asynchronous to Database Sources</dd>
+          <dt><a class="coming_soon" name="html/Lesson9_testing.html">Lesson 9: Testing Challenges</a></dt>
+          <dd class="coming_soon">Multiple technologies create unique testing challenges</dd>
+          <dt><a class="coming_soon" name="html/Lesson10_buildProcess.html">Lesson 10: The Build Process</a></dt>
+          <dd class="coming_soon">Revisiting Lesson 2 and applying it to a heroku build</dd>
+          <dt><a class="coming_soon" name="html/nextSteps.html">Next Steps</a></dt>
+          <dd class="coming_soon">Where do you want to go from here?</dd>
+        </dl>
+      <div id="description" class="inner_content vertical-divider">
+        <p>
+          These days, it is not enough to say that you know JavaScript or client-server or object-oriented development. Developers are increasingly being pushed to become familiar with each layer in multitier development. Not being familiar with one tier or another may cost you that interview that you had been waiting to find, and the dream job that follows. 
+        </p>
+        <p>
+          The bob-angular seed is a ready-to-deploy, full stack node application with an express server, postgres database, and independent angular front end. It is intended to be poked at and learned from, and is not claimed to be the best way to do or solve any specific issue that is resolved with the code it contains. It is imperfect, but works.
+        </p>
+        <h2>Who This is For</h2>
+        <p>
+          This is intended for those learning angular, node, full-stack javascript development, automating builds through github and heroku, three.js, d3.js and svg skills, applying less stylesheets, creating REST urls, creating unit and e2e tests, integrating the Leaflet map and YouTube video search APIs into an application. Basically, this is intended to be an app in which everything works, not always as polished as your application will, but there is enough to help someone through a situation that requires proof through application. 
+        </p>
+        <h2>What this is and is not</h2>
+        <p>
+          This is a fully functioning application, with an express server, a client-side angular-based seed application, with unit and end to end tests. It is not necessarily representative of best practices in any of its constituent elements. It is guaranteed to work as is. 
+        </p>
+        <h3>Skills You will Acquire</h3>
+        <h4>Application: Server and Testing</h4>
+        <ul>
+          <li>Use node and the node package manager (npm) to install and build deployable app</li>
+          <li>Build a package.json script that enables node server development and deployment</li>
+          <li>Build a bower.json script that enables angular application development and deployment</li>
+          <li>Write a Gruntfile that uses the package and bower scripts to create deployable app</li>
+          <li>Create karma unit tests in Jasmine</li>
+          <li>Create end to end (e2e) tests in Jasmine for protractor</li>
+          <li>Postgres querying from Node</li>
+        </ul>
+        <h4>Application: Client and Client-Server</h4>
+        <ul>
+          <li>Develop a complex angular application</li>
+          <li>Use three.js to enable the mapping of 2d content to 3d placememnt</li>
+          <li>Integrate a number of APIs and Technologies with angular and three including
+            <ul>
+              <li>Bootstrap, because you already use it</li>
+              <li>JQuery, used sparingly</li>
+              <li>Less and Responsive Stylesheets</li>
+              <li>YouTube, with a video search feed</li>
+              <li>Leaflet (mobile friendly mapping)</li>
+              <li>SVG and WebGL, mixing DOM with Canvas</li>
+              <li>D3, tying together data and presentation</li>
+            </ul>
+          </li>
+          <li>Asynchronous Loading from angular, jquery, d3 and other frameworks</li>
+        </ul>
+        <p>
+          And, as a bonus, the grouped_world.svg file uses ISO2 country labels (such as fr for France), grouped within continent shapes. This enables the map to be useful as both an interactive controller and an addressable display element.
+        </p>
+        <p>
+          Much of what you will see will be built into the code itself, such as using jQuery or D3 selector methods, or bootstrap css classes. The most interesting element in the application, for me, is how the three.js components replace a DOM element; then children or siblings of that DOM element, which were never in the visible DOM, are inserted into the three.js component. This enables the full interactivity of 2D Web to be mapped onto WebGL shapes at up to 60 frames per second (fps). The image display is GPU-powered, which means that the device will determine the suitable fps. Several interactive examples, including a YouTube player with feed, a Leaflet location finder, and an SVG map of the world which uses World Bank JSON files to demonstrate D3-SVG statistical display, are included.
+        </p>
+        <h2>Addendum</h2>
+        <p>
+          Please feel free to copy, paste, and change the content as much as you want. There are no guarantees and no strings attached. The source code can be found here:
+        </p>
+        <p class="centered">
+          <a href="http://kevineverywhere.github.io/bob-angular/">bob-angular on github</a>
+        </p>
+        <div class="footer vertical-divider">
+          <p class="centered">
+            <a class="padded">Home Page</a><br/>
+            <a class="padded" href="html/Lesson1_overview.html">Lesson 1: Overview > </a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>
